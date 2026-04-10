@@ -10,7 +10,7 @@ body {
   background-color: #0d0d0a;
   background-image:
     linear-gradient(160deg, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.72) 100%),
-    url('https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=1920&q=80');
+    url('https://cdn.pixabay.com/photo/2016/11/29/13/13/battle-1869030_1280.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
