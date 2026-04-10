@@ -64,6 +64,7 @@ function drawHeatmap(ctx, events, bounds, width, height, mode) {
 
 export default function MapCanvas({ events, mapId, bounds, heatmapMode }) {
   const canvasRef = useRef(null)
+  const containerRef = useRef(null)
   const [tooltip, setTooltip] = useState(null)
   const eventsRef = useRef(events)
   const boundsRef = useRef(bounds)
@@ -149,12 +150,25 @@ export default function MapCanvas({ events, mapId, bounds, heatmapMode }) {
   }, [])
 
   return (
-    <div style={{ position: "relative", display: "inline-block" }}>
+    <div
+      ref={containerRef}
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth: "800px",
+        aspectRatio: "1/1",
+      }}
+    >
       <canvas
         ref={canvasRef}
         width={800}
         height={800}
         className="map-canvas"
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "block",
+        }}
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setTooltip(null)}
       />
@@ -164,23 +178,35 @@ export default function MapCanvas({ events, mapId, bounds, heatmapMode }) {
             position: "fixed",
             left: tooltip.x,
             top: tooltip.y,
-            background: "#1a1a2e",
-            border: "1px solid #00ff88",
-            borderRadius: "6px",
+            background: "rgba(10,8,0,0.97)",
+            border: "1px solid #c8a020",
+            borderTop: "2px solid #ffcc30",
             padding: "8px 12px",
             fontSize: "12px",
-            color: "#e0e0e0",
+            color: "#d4c98a",
             pointerEvents: "none",
             zIndex: 1000,
-            lineHeight: "1.6",
+            lineHeight: "1.8",
+            fontFamily: "'Rajdhani', sans-serif",
+            fontWeight: 600,
+            clipPath: "polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%)",
+            minWidth: "160px",
           }}
         >
-          <div style={{ color: EVENT_COLORS[tooltip.event] || "#fff", fontWeight: "bold" }}>
+          <div style={{
+            color: EVENT_COLORS[tooltip.event] || "#fff",
+            fontFamily: "'Share Tech Mono', monospace",
+            fontSize: "11px",
+            letterSpacing: "2px",
+            textTransform: "uppercase",
+            marginBottom: "4px",
+            textShadow: `0 0 6px ${EVENT_COLORS[tooltip.event]}`,
+          }}>
             {tooltip.event}
           </div>
-          <div>Player: {tooltip.player}</div>
-          <div>Match: {tooltip.match}</div>
-          <div>Date: {tooltip.date}</div>
+          <div>Player: <span style={{ color: "#ffcc30" }}>{tooltip.player}</span></div>
+          <div>Match: <span style={{ color: "#ffcc30" }}>{tooltip.match}</span></div>
+          <div>Date: <span style={{ color: "#ffcc30" }}>{tooltip.date}</span></div>
         </div>
       )}
     </div>
