@@ -3,7 +3,7 @@
 **Live URL:** https://lila-viz-iota.vercel.app  
 **Repo:** https://github.com/amanav050/Lila_viz
 
----
+
 ## What I Built With & Why
 
 - **React + Vite** — Fast setup, clean component model, instant hot reload
@@ -11,7 +11,7 @@
 - **Python (pandas + pyarrow)** — Best-in-class parquet parsing, battle-tested for data engineering
 - **Vercel** — Zero-config, auto-deploys from GitHub push, free tier sufficient
 
----
+
 ## How I Built It
 
 ### Phase 0 — Project Setup
@@ -52,7 +52,7 @@ events down to components. Filtering happens entirely client-side.
 - No environment variables needed
 - All data is static and served directly from the `public/` folder
 
----
+
 
 ## Data Flow
 1,243 .nakama-0 parquet files (Feb 10–14, 2026)
@@ -77,7 +77,6 @@ React app (browser)
 → plots event dots using coordinate mapping formula
 → hover tooltip on non-position events
 
----
 
 ## Coordinate Mapping
 
@@ -90,17 +89,13 @@ pixel_y = (world_z - z_min) / (z_max - z_min) * canvas_height
 - Automatically adapts if the playable area expands between builds
 - Y coordinate dropped entirely — irrelevant for 2D minimap rendering
 
----
-
-## Bot Detection
+## Bot Detection:
 
 - Bots have numeric user_ids — e.g. `1379`, `1443`
 - Humans have UUID-format user_ids — e.g. `b15bb032-6782-441a-9bd8-b42d446220cd`
 - Detection logic: `is_bot = str(user_id).isdigit()`
 - Clean signal — zero edge cases found across all 1,243 files
 - Visually distinguished in the tool: humans = circles, bots = squares
-
----
 
 ## Assumptions
 
@@ -110,8 +105,6 @@ pixel_y = (world_z - z_min) / (z_max - z_min) * canvas_height
 - **Coordinate bounds from data range** — no explicit bounds in README, derived from min/max
 - **February 14 is a partial day** — included with date filter so designers can exclude it
 
----
-
 ## Tradeoffs
 
 - **Static JSON vs Backend API** — data is static, no server needed, faster load, nothing to break
@@ -119,8 +112,6 @@ pixel_y = (world_z - z_min) / (z_max - z_min) * canvas_height
 - **One JSON per map vs single combined file** — avoids loading 89k rows when viewing one map
 - **Client-side filtering vs server-side** — sufficient at this scale, eliminates backend complexity
 - **Pre-compute bounds vs hardcode** — more resilient to map updates in future builds
-
----
 
 ## Why No Backend?
 
