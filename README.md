@@ -82,3 +82,45 @@ lila-viz/
 ## Environment Variables
 
 None required. All data is pre-processed and served statically.
+
+## Walkthrough
+
+### 1. Selecting a Map
+Click **AmbroseValley**, **GrandRift**, or **Lockdown** in the top right tabs.
+Each map loads its own set of events and minimap image.
+
+### 2. Filtering Events
+Use the sidebar filters to narrow down what you see:
+- **Date** — filter by a specific day (Feb 10–14) or view all 5 days
+- **Match** — select a specific match ID to watch one game at a time
+- **Heatmap** — switch between Kill Zones, Death Zones, Traffic, or Off
+- **Show Players** — toggle humans, bots, or both independently
+
+### 3. Reading the Map
+- **Circles** = human players
+- **Squares** = bots
+- **Green dots** = position events (movement trails)
+- **Red dots** = kills
+- **Orange dots** = deaths
+- **Yellow dots** = loot pickups
+- **Pink dots** = storm deaths
+
+### 4. Hover Tooltips
+Hover over any non-position event dot to see:
+- Event type
+- Human or bot
+- Match ID
+- Date
+
+### 5. Timeline
+Use the **Start** and **End** sliders at the bottom to scrub through match
+progression. Drag Start forward to see how a match unfolds over time.
+Click **Reset** to show all events again.
+
+### 6. Heatmap Overlays
+Select a heatmap mode from the dropdown:
+- **Kill Zones** — where most kills happen
+- **Death Zones** — where players die most
+- **Traffic** — which areas see the most movement
+
+Hotter colours = higher density.
